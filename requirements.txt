@@ -1,3 +1,4 @@
 pywinauto
 pywinauto_recorder
 pytest
+pyautogui
