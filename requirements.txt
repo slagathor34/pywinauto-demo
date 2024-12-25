@@ -1,5 +1,6 @@
-pywinauto
-pywinauto_recorder
+#pywinauto
+#pywinauto_recorder
 pytest
 pyautogui
 opencv-python
+pillow

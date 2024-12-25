@@ -1,4 +1,4 @@
-import pytest
+import pytest, os, time
 from unittest.mock import patch, MagicMock
 from WinRAR_pyautogui import WinRARInstaller
 
