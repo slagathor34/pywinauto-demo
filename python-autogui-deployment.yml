@@ -1,0 +1,62 @@
+---
+- name: Setup Python environment on Windows
+  hosts: windows
+  vars:
+    artifactory_url: "https://your-artifactory-repo"
+    artifactory_username: "your-username"
+    artifactory_password: "your-password"
+    pywinauto_script: "WinRAR_Install.py"
+  tasks:
+    - name: Ensure Python3 is installed
+      win_chocolatey:
+        name: python
+        state: present
+        version: '3.9.7'  # Specify the version you need
+
+    - name: Install Git
+      win_chocolatey:
+        name: git
+        state: present
+
+    - name: Clone Python code from Bitbucket
+      win_command: git clone https://bitbucket.org/your-repo/your-project.git C:\path\to\your-project
+      args:
+        creates: C:\path\to\your-project
+
+    - name: Configure Chocolatey to use JFrog Artifactory
+      win_command: choco source add -n=Artifactory -s=https://your-artifactory-repo/api/nuget/chocolatey
+      args:
+        creates: C:\ProgramData\chocolatey\config\chocolatey.config
+
+    - name: Configure Winget to use JFrog Artifactory
+      win_command: winget source add -n=Artifactory -a=https://your-artifactory-repo/api/nuget/winget
+      args:
+        creates: C:\Users\{{ ansible_user }}\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\source.json
+    
+    - name: Configure pip to use JFrog Artifactory
+      win_copy:
+        content: |
+          [global]
+          index-url = https://{{ artifactory_username }}:{{ artifactory_password }}@{{ artifactory_url }}/api/pypi/pypi/simple
+        dest: C:\Users\{{ ansible_user }}\pip\pip.ini
+
+    - name: Install pip requirements
+      win_command: C:\Python39\python.exe -m pip install -r C:\path\to\your-project\requirements.txt
+      args:
+        creates: C:\path\to\your-project\venv
+
+    - name: Create virtual environment
+      win_command: C:\Python39\python.exe -m venv C:\path\to\your-project\venv
+      args:
+        creates: C:\path\to\your-project\venv
+
+    - name: Install pip requirements in virtual environment
+      win_command: C:\path\to\your-project\venv\Scripts\pip.exe install -r C:\path\to\your-project\requirements.txt
+      args:
+        creates: C:\path\to\your-project\venv\Scripts\pip.exe
+    
+    - name: Execute script as bobDBAdmin
+      win_shell: |
+        runas /user:bobDBAdmin "C:\path\to\your-project\venv\Scripts\python.exe C:\path\to\your-project\{{ pywinauto_script }}"
+      args:
+        executable: cmd
