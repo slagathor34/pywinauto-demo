@@ -31,4 +31,6 @@ pip install pyautogui opencv-python pillow
 
 ### **Ensure the necessary screenshots are available**:
 * `settings-apps-menu.png`: Screenshot of the Apps settings menu in Windows Settings.
+![Settings Apps Menu](img/WinRAR/settings-apps-menu.png)
 * `installed-apps-menu.png`: Screenshot of the Installed Apps menu in Windows Settings.
+![Installed Apps Menu](img/WinRAR/installed-apps-menu.png)
