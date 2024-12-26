@@ -37,3 +37,42 @@ pip install pyautogui opencv-python pillow
 * `installed-apps-menu.png`: Screenshot of the Installed Apps menu in Windows Settings.
 
 ![Installed Apps Menu](/img/WinRAR/installed-apps-menu.png)
+
+## Workflow
+
+```mermaid
+graph TD
+    A[Start Script] --> B[Initialize WinRARUninstallAutomator]
+    B --> C[Open Settings]
+    C --> D{Settings Opened?}
+    D -->|Yes| E[Click on Apps Settings Option]
+    D -->|No| F[Print "App settings panel not found on screen."]
+    E --> G{Apps Settings Option Clicked?}
+    G -->|Yes| H[Click on Installed Apps Menu]
+    G -->|No| I[Print "Installed App settings panel not found on screen."]
+    H --> J{Installed Apps Menu Clicked?}
+    J -->|Yes| K[Proceed with Uninstallation Steps]
+    J -->|No| L[Print "Installed App settings panel not found on screen."]
+    K --> M[End Script]
+    F --> M
+    I --> M
+    L --> M
+```
+### Explanation
+
+- **A**: Start the script.
+- **B**: Initialize the `WinRARUninstallAutomator` class.
+- **C**: Open the Windows Settings.
+- **D**: Check if the Settings window opened successfully.
+  - **Yes**: Proceed to click on the Apps settings option.
+  - **No**: Print "App settings panel not found on screen."
+- **E**: Click on the Apps settings option.
+- **G**: Check if the Apps settings option was clicked successfully.
+  - **Yes**: Proceed to click on the Installed Apps menu.
+  - **No**: Print "Installed App settings panel not found on screen."
+- **H**: Click on the Installed Apps menu.
+- **J**: Check if the Installed Apps menu was clicked successfully.
+  - **Yes**: Proceed with the uninstallation steps.
+  - **No**: Print "Installed App settings panel not found on screen."
+- **K**: Proceed with the uninstallation steps (not detailed in the provided code).
+- **M**: End the script.
