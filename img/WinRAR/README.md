@@ -41,7 +41,7 @@ pip install pyautogui opencv-python pillow
 ## Workflow
 
 ```mermaid
-  graph TD
+  graph LR
     A[Start Script] --> B[Initialize WinRARUninstallAutomator]
     B --> C[Open Settings]
     C --> D{Settings Opened?}
