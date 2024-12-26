@@ -41,18 +41,18 @@ pip install pyautogui opencv-python pillow
 ## Workflow
 
 ```mermaid
-graph TD
+  graph TD
     A[Start Script] --> B[Initialize WinRARUninstallAutomator]
     B --> C[Open Settings]
     C --> D{Settings Opened?}
     D -->|Yes| E[Click on Apps Settings Option]
-    D -->|No| F[Print "App settings panel not found on screen."]
+    D -->|No| F[Print App settings panel not found on screen]
     E --> G{Apps Settings Option Clicked?}
     G -->|Yes| H[Click on Installed Apps Menu]
-    G -->|No| I[Print "Installed App settings panel not found on screen."]
+    G -->|No| I[Print Installed App settings panel not found on screen]
     H --> J{Installed Apps Menu Clicked?}
     J -->|Yes| K[Proceed with Uninstallation Steps]
-    J -->|No| L[Print "Installed App settings panel not found on screen."]
+    J -->|No| L[Print Installed App settings panel not found on screen]
     K --> M[End Script]
     F --> M
     I --> M
