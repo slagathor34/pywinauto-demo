@@ -12,7 +12,7 @@ class WinRARUninstallAutomator:
         subprocess.run(["start", "ms-settings:"], shell=True)
         time.sleep(5)  # Wait for Settings to open
 
-        # Click on the search bar
+        # Click on the Apps settings option
         settings_app_location = pyautogui.locateCenterOnScreen('img/WinRAR/settings-apps-menu.png', confidence=0.8)
         if settings_app_location:
             pyautogui.click(settings_app_location)
