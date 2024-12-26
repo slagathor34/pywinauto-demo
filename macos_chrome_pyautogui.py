@@ -18,7 +18,7 @@ class ChromeYouTubeAutomator:
         time.sleep(2)  # Wait for YouTube to load
 
         # Click on the search bar
-        search_bar_location = pyautogui.locateCenterOnScreen('img/youtube_search_bar.png', confidence=0.8)
+        search_bar_location = pyautogui.locateCenterOnScreen('img/youtube-demo/youtube_search_bar.png', confidence=0.8)
         if search_bar_location:
             pyautogui.click(search_bar_location)
             time.sleep(1)
@@ -30,7 +30,7 @@ class ChromeYouTubeAutomator:
         else:
             print("YouTube search bar not found on screen.")
         
-        subscribe_button = pyautogui.locateCenterOnScreen('img/youtube_subscribe_button.png', confidence=0.8)
+        subscribe_button = pyautogui.locateCenterOnScreen('img/youtube-demo/youtube_subscribe_button.png', confidence=0.8)
         if search_bar_location:
             pyautogui.click(subscribe_button)
             pyautogui.press('enter')
