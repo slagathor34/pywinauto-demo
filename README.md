@@ -22,6 +22,34 @@ pip install pywinauto pyautogui opencv-python pillow
 git clone https://github.com/your-repo/your-project.git
 ```
 
+### Configure pip to Use JFrog Artifactory
+Create a `pip.ini` file in the user's home directory with the following content:
+```sh
+[global]
+index-url = https://your-username:your-password@your-artifactory-repo/api/pypi/pypi/simple
+```
+
+### Create and activate a Virtual Environment
+```sh
+python3 -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
+
+### Install the Required Python Packages from Jfrog Repository
+```sh
+pip install pywinauto pyautogui opencv-python pillow
+```
+
+### Run Automation
+```sh
+python win_uninstall_winrar.py
+```
+
+### Clean Up
+```sh
+deactivate
+rm -rf venv
+```
 
 
 ## Workflow
