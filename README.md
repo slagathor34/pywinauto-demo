@@ -12,6 +12,9 @@ This project automates the user interface of Windows 11 and Windows Server using
 - Access to a verified JFrog Artifactory repository
 
 ## Installation
+```sh
+pip install pywinauto pyautogui opencv-python pillow
+```
 
 ### Clone the Repository
 
@@ -19,9 +22,11 @@ This project automates the user interface of Windows 11 and Windows Server using
 git clone https://github.com/your-repo/your-project.git
 ```
 
+
+
 ## Workflow
 ```mermaid
-  graph TD
+  graph LR
     A[Start Script] --> B[Initialize WinRARUninstallAutomator]
     B --> C[Open Settings]
     C --> D{Settings Opened?}
