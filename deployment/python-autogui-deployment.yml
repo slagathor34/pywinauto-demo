@@ -60,3 +60,13 @@
         runas /user:bobDBAdmin "C:\path\to\your-project\venv\Scripts\python.exe C:\path\to\your-project\{{ pywinauto_script }}"
       args:
         executable: cmd
+    
+    - name: Clean up and delete all code downloaded from Bitbucket
+      win_file:
+        path: C:\path\to\your-project
+        state: absent
+
+    - name: Remove the virtual environment
+      win_file:
+        path: C:\path\to\your-project\venv
+        state: absent
